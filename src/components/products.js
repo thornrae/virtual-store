@@ -1,10 +1,49 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+
+import {useSelector} from 'react-redux';
+
+// import {displayProducts} from '../store/products.js';
+// import {selectCategory} from '../store/categories.js';
+
 
 function Product() {
+
+  // const dispatch = useDispatch();
+  const productReducer = useSelector( (state) => state.products)
+  const selectedCategory = useSelector( (state) => state.categories.selectedCategory)
+
+  const categoryReducer = useSelector( (state) => state.categories)
+
+
+  // useEffect( () => {
+  //   dispatch( displayProducts() )
+  // }, [])
+
+  // if(products.name === payload) {
+  const filteredProducts = productReducer.products.filter(product => product.category === selectedCategory);
+
+  console.log('filtered products', filteredProducts)
+
+  //based on the current on the selected category and then just render that category.description
+
+  const filteredDescription = categoryReducer.categories.filter(desc => desc.name === selectedCategory )
+
   return (
     <>
+    
+    
+    <p>
+      {filteredDescription.map(val => (
+        <>
+        <h2>Current Category: </h2>
+        <li>{val.description}</li>
+        </>
+      ))}
+    </p>
     <h3>Products:</h3>
-    <p>Products of current category will render </p>
+      {filteredProducts.map(product => (
+          <li> {product.name}</li>
+      ))}
     </>
 
     )
