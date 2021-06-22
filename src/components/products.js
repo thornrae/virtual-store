@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 
 import {useSelector} from 'react-redux';
 
-import {displayProducts} from '../store/products.js';
-import {selectCategory} from '../store/categories.js';
+// import {displayProducts} from '../store/products.js';
+// import {selectCategory} from '../store/categories.js';
 
 
 function Product() {
@@ -30,14 +30,16 @@ function Product() {
 
   return (
     <>
-    <h2>Current Category: </h2>
+    
     
     <p>
       {filteredDescription.map(val => (
+        <>
+        <h2>Current Category: </h2>
         <li>{val.description}</li>
+        </>
       ))}
     </p>
-    {/* if statement to say if empty do not render */}
     <h3>Products:</h3>
       {filteredProducts.map(product => (
           <li> {product.name}</li>

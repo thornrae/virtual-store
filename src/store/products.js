@@ -51,7 +51,7 @@ export default function reducer( state=initialState, action ) {
 
   switch(type) {
     case 'DISPLAY':
-      let products = state.products;
+      // let products = state.products;
       
       break;
         default:

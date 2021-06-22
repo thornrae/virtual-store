@@ -6,7 +6,7 @@ const initialState = {
     {name: "pots", description: "look for pots"}
   ], 
   //selected category to keep track of what state is - state is the selected category
-  selectedCategory: ''
+  selectedCategory: {}
 };
 
 //reducer function

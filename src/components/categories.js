@@ -7,8 +7,8 @@ function Categories (props) {
 
   const dispatch = useDispatch();
   
-  const categoryReducer = useSelector( (state) => state.categories)
-  console.log('categoryReducer', categoryReducer);
+  const categoryState = useSelector( (state) => state.categories)
+  console.log('categoryReducer', categoryState);
 
 
   // function chooseOne() {
