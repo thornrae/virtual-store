@@ -2,8 +2,8 @@
 
 const initialState = {
   categories: [
-    {name: "plants", description: "description about this product category"},
-    {name: "pots", description: "description about this product category"}
+    {name: "plants", description: "description about plant category"},
+    {name: "pots", description: "description about pot category"}
   ], 
   //selected category to keep track of what state is - state is the selected category
   selectedCategory: {}
