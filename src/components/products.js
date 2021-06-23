@@ -19,9 +19,11 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    margin: "2em"
   },
   media: {
     height: 140,
+    
   },
   
   grid: {
@@ -36,15 +38,12 @@ const useStyles = makeStyles({
   // },
 });
 
-
-
 export default function MediaCard() {
   const classes = useStyles();
 
     // const dispatch = useDispatch();
   const productReducer = useSelector( (state) => state.products)
   const selectedCategory = useSelector( (state) => state.categories.selectedCategory)
-
   const categoryReducer = useSelector( (state) => state.categories)
 
   const filteredProducts = productReducer.products.filter(product => product.category === selectedCategory);
@@ -54,7 +53,13 @@ export default function MediaCard() {
   const filteredDescription = categoryReducer.categories.filter(desc => desc.name === selectedCategory )
 
   return (
-    
+    <>
+    {filteredDescription.map(val => (
+        <>
+        <h2>{val.name} </h2>
+        <p>{val.description}</p>
+        </>
+      ))}
 
 <Grid container className={classes.grid} spacing={2}>
       <Grid item xs={12}>
@@ -66,7 +71,7 @@ export default function MediaCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://source.unsplash.com/random?plant"
+          image={`https://source.unsplash.com/random?${product.name}`}
           title="Random Plant"
         />
         <CardContent>
@@ -96,7 +101,7 @@ export default function MediaCard() {
         </Grid>
       </Grid>
     </Grid> 
-
+</>
   );
 }
 
