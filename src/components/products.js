@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
 import {useSelector} from 'react-redux';
 
@@ -88,16 +88,14 @@ export default function MediaCard() {
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Add to Cart
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          More Details
         </Button>
       </CardActions>
     </Card>
     ))}
-
-
         </Grid>
       </Grid>
     </Grid> 
