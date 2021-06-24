@@ -43,6 +43,10 @@ const initialState = {
       inventory: 3
     },
   ], 
+  categories: [
+    {name: "plants", description: "look for plants"},
+    {name: "pots", description: "look for pots"}
+  ], 
 };
 
 export default function reducer( state=initialState, action ) {

@@ -2,8 +2,8 @@
 
 const initialState = {
   categories: [
-    {name: "plants", description: "look for plants"},
-    {name: "pots", description: "look for pots"}
+    {name: "plants", description: "description about plant category"},
+    {name: "pots", description: "description about pot category"}
   ], 
   //selected category to keep track of what state is - state is the selected category
   selectedCategory: {}
@@ -36,8 +36,6 @@ export default function reducer( state=initialState, action ) {
   //     // default:
   //     //   return state;
   // } 
-
-
 
 //actions
 
