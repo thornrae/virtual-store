@@ -4,8 +4,9 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 
 import products from './products.js';
 import categories from './categories.js';
+import cart from './cart.js';
 
-const reducers = combineReducers ({ categories, products});
+const reducers = combineReducers ({ categories, products, cart});
 
 const store = () => {
   return createStore(reducers, composeWithDevTools())

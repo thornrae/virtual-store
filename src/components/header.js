@@ -31,7 +31,7 @@ function Header() {
             {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Pots and Plants
+            Plants and Pots
           </Typography>
           <Button color="inherit">Cart</Button>
         </Toolbar>
