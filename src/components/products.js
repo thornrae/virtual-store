@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 
 // import {displayProducts} from '../store/products.js';
 // import {selectCategory} from '../store/categories.js';
@@ -15,6 +15,8 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+
+import {addToCart} from '../store/cart.js';
 
 const useStyles = makeStyles({
   root: {
@@ -39,18 +41,25 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard() {
+  const dispatch = useDispatch();
+
   const classes = useStyles();
 
     // const dispatch = useDispatch();
   const productReducer = useSelector( (state) => state.products)
   const selectedCategory = useSelector( (state) => state.categories.selectedCategory)
   const categoryReducer = useSelector( (state) => state.categories)
+  const cartReducer = useSelector( (state) => state.cart);
+  console.log('cart reducer in products comp', cartReducer)
+
+
 
   const filteredProducts = productReducer.products.filter(product => product.category === selectedCategory);
-
-  console.log('filtered products', filteredProducts)
-
   const filteredDescription = categoryReducer.categories.filter(desc => desc.name === selectedCategory )
+
+  function cartAdd(item) {
+    dispatch ( addToCart(item));
+  }
 
   return (
     <>
@@ -72,11 +81,11 @@ export default function MediaCard() {
         <CardMedia
           className={classes.media}
           image={`https://source.unsplash.com/random?${product.name}`}
-          title="Random Plant"
+          title="Random Product"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            <li key={product.name}> {product.name}</li>
+             {product.name}
       
           </Typography>
           
@@ -87,17 +96,15 @@ export default function MediaCard() {
         
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Share
+        <Button size="small" color="primary" onClick={() => cartAdd(product)}>
+          Add to Cart
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          {product.price}
         </Button>
       </CardActions>
     </Card>
     ))}
-
-
         </Grid>
       </Grid>
     </Grid> 

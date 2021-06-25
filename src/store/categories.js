@@ -18,8 +18,8 @@ export default function reducer( state=initialState, action ) {
     case 'SELECT':
       // let categories = state.categories;
         return { ...state, selectedCategory: payload}
-        default:
-          return state;
+    default:
+        return state;
       }
       
   }

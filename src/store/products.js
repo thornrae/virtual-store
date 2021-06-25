@@ -5,42 +5,42 @@ const initialState = {
       category: "plants",
       description: "leafy plant",
       price: "$25",
-      inventory: 4
+      inventory: 5
     },
     {
       name: "aloe plant",
       category: "plants",
       description: "succulent",
       price: "$15",
-      inventory: 2
+      inventory: 5
     },
     {
       name: "pilea",
       category: "plants",
       description: "fun circular leaves",
       price: "$20",
-      inventory: 1
+      inventory: 5
     },
     {
       name: "small pot",
       category: "pots",
       description: "for small plants",
       price: "$10",
-      inventory: 4
+      inventory: 5
     },
     {
       name: "medium pot",
       category: "pots",
       description: "for medium plants",
       price: "$15",
-      inventory: 2
+      inventory: 5
     },
     {
       name: "large pot",
       category: "pots",
       description: "for large plants",
       price: "$25",
-      inventory: 3
+      inventory: 5
     },
   ], 
   categories: [
@@ -54,9 +54,10 @@ export default function reducer( state=initialState, action ) {
   const { type, payload } = action;
 
   switch(type) {
+    case 'ADD':
+      return {...state, products: [payload.inventory - 1]}
     case 'DISPLAY':
       // let products = state.products;
-      
       break;
         default:
           return state;
@@ -69,3 +70,10 @@ export default function reducer( state=initialState, action ) {
       payload: category
     }
   }
+
+  // export const manageInventory = (item) => {
+  //   return {
+  //     type: 'ADD', 
+  //     payload: item
+  // //   }
+  // }
