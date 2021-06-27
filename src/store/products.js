@@ -55,10 +55,17 @@ export default function reducer( state=initialState, action ) {
 
   switch(type) {
     case 'ADD':
-      return {...state, products: [payload.inventory - 1]}
+      let items =  state.products.map( item => {
+        if(item.name === payload.name) {
+           item.inventory--;
+        }
+        return item      
+      })
+      return {...state, products: items};
+      // 
     case 'DISPLAY':
-      // let products = state.products;
-      break;
+      return state
+      
         default:
           return state;
       }
@@ -75,5 +82,5 @@ export default function reducer( state=initialState, action ) {
   //   return {
   //     type: 'ADD', 
   //     payload: item
-  // //   }
+  //   }
   // }
