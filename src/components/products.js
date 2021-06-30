@@ -54,7 +54,7 @@ export default function MediaCard() {
   console.log(productReducer.products);
 
   const filteredProducts = productReducer.products.filter(product => product.category === selectedCategory);
-  const filteredDescription = categoryReducer.categories.filter(desc => desc.name === selectedCategory )
+  const filteredDescription = categoryReducer.categories.filter(desc => desc.categoryName === selectedCategory )
 
   function cartAdd(item) {
     dispatch ( addToCart(item));
@@ -64,7 +64,7 @@ export default function MediaCard() {
     <>
     {filteredDescription.map(val => (
         <>
-        <h2>{val.name} </h2>
+        <h2>{val.categoryName} </h2>
         <p>{val.description}</p>
         </>
       ))}

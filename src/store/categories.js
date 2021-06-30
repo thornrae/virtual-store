@@ -2,8 +2,15 @@
 
 const initialState = {
   categories: [
-    {name: "plants", description: "description about plant category"},
-    {name: "pots", description: "description about pot category"}
+    {categoryName: "plants", 
+    normalizedName: "plants",
+    displayName: "plants",
+    description: "description about plant category",
+    },
+    {categoryName: "pots",
+    normalizedName: "pots",
+    displayName: "pots",
+    description: "description about pot category"}
   ], 
   //selected category to keep track of what state is - state is the selected category
   selectedCategory: {}
@@ -20,24 +27,9 @@ export default function reducer( state=initialState, action ) {
         return { ...state, selectedCategory: payload}
     default:
         return state;
-      }
-      
+      }   
   }
 
-  // switch(type) {
-  //   case 'SELECTCATEGORY':
-  //     let categories = state.categories.map(category => 
-  //       if(category === payload) {
-
-  //       }
-  //     )
-  //     //if payload === map of categories, set selectedCategory state to payload
-  //     // return { selectedCategory: payload};
-  //     // default:
-  //     //   return state;
-  // } 
-
-//actions
 
 export const selectCategory = (name) => {
   return {

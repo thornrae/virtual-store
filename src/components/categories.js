@@ -7,8 +7,8 @@ function Categories (props) {
 
   const dispatch = useDispatch();
   
-  const categoryState = useSelector( (state) => state.categories)
-  console.log('categoryReducer', categoryState);
+  const categoryState = useSelector( (state) => state.categories.categories)
+  console.log('categoryState: ', categoryState);
 
 
   // function chooseOne() {
@@ -21,13 +21,14 @@ function Categories (props) {
   
 
   return (
-    <>
-    {/* <h1>Browse Our Categories {categoryReducer.selectedCategory}</h1> */}
-    <button onClick={ () => select('plants')}>Plants</button>
-    <button onClick={() => select('pots')}>Pots</button>
-    {/* or should these be inputs to be able to use e.target.value */}
-    </>
-  )
+  <>
+    {categoryState.map(category => (
+  <>
+    <button key={category._id}onClick={ () => select(`${category.categoryName}`)}>{category.categoryName}</button>
+  </>
+    ))}
+</>
+);
 }
 
 export default Categories;
