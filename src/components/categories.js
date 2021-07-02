@@ -1,15 +1,16 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {selectCategory} from '../store/categories.js';
+import {selectCategory} from '../store/products.js';
 
 function Categories (props) {
 
   const dispatch = useDispatch();
   
-  const categoryState = useSelector( (state) => state.categories.categories)
+  const categoryState = useSelector( (state) => state.products.categories)
   console.log('categoryState: ', categoryState);
 
+  
 
   // function chooseOne() {
   //   dispatch( selectCategory );

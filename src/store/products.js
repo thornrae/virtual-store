@@ -44,9 +44,17 @@ const initialState = {
     },
   ], 
   categories: [
-    {name: "plants", description: "look for plants"},
-    {name: "pots", description: "look for pots"}
-  ], 
+    {categoryName: "plants", 
+    normalizedName: "plants",
+    displayName: "plants",
+    description: "description about plant category",
+    },
+    {categoryName: "pots",
+    normalizedName: "pots",
+    displayName: "pots",
+    description: "description about pot category"}
+  ],
+  selectedCategory: {} 
 };
 
 export default function reducer( state=initialState, action ) {
@@ -62,7 +70,8 @@ export default function reducer( state=initialState, action ) {
         return item      
       })
       return {...state, products: items};
-      // 
+    case 'SELECT':
+        return { ...state, selectedCategory: payload}
     case 'DISPLAY':
       return state
       
@@ -75,6 +84,13 @@ export default function reducer( state=initialState, action ) {
     return {
       type: 'DISPLAY',
       payload: category
+    }
+  }
+
+  export const selectCategory = (name) => {
+    return {
+      type: 'SELECT',
+      payload: name
     }
   }
 

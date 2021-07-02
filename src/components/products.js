@@ -46,15 +46,15 @@ export default function MediaCard() {
   const classes = useStyles();
 
   const productReducer = useSelector( (state) => state.products)
-  const selectedCategory = useSelector( (state) => state.categories.selectedCategory)
-  const categoryReducer = useSelector( (state) => state.categories)
-  const cartReducer = useSelector( (state) => state.cart);
+  const selectedCategory = useSelector( (state) => state.products.selectedCategory)
+  const categoryReducer = useSelector( (state) => state.products.categories)
+  // const cartReducer = useSelector( (state) => state.cart);
   // console.log('cart reducer in products comp', cartReducer)
 
   console.log(productReducer.products);
 
   const filteredProducts = productReducer.products.filter(product => product.category === selectedCategory);
-  const filteredDescription = categoryReducer.categories.filter(desc => desc.categoryName === selectedCategory )
+  const filteredDescription = categoryReducer.filter(desc => desc.categoryName === selectedCategory )
 
   function cartAdd(item) {
     dispatch ( addToCart(item));
