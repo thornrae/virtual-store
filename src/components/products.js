@@ -45,16 +45,8 @@ export default function MediaCard() {
 
   const classes = useStyles();
 
-  const productReducer = useSelector( (state) => state.products)
-  const selectedCategory = useSelector( (state) => state.products.selectedCategory)
-  const categoryReducer = useSelector( (state) => state.products.categories)
-  // const cartReducer = useSelector( (state) => state.cart);
-  // console.log('cart reducer in products comp', cartReducer)
-
-  console.log(productReducer.products);
-
-  const filteredProducts = productReducer.products.filter(product => product.category === selectedCategory);
-  const filteredDescription = categoryReducer.filter(desc => desc.categoryName === selectedCategory )
+  const selectedProducts = useSelector( (state) => state.products.activeProducts)
+  const categoryReducer = useSelector( (state) => state.products.activeCategories)
 
   function cartAdd(item) {
     dispatch ( addToCart(item));
@@ -62,7 +54,7 @@ export default function MediaCard() {
 
   return (
     <>
-    {filteredDescription.map(val => (
+    {categoryReducer.map(val => (
         <>
         <h2>{val.categoryName} </h2>
         <p>{val.description}</p>
@@ -72,7 +64,7 @@ export default function MediaCard() {
 <Grid container className={classes.grid} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
-        {filteredProducts.map(product => (
+        {selectedProducts.map(product => (
           
 
 <Card className={classes.root}>

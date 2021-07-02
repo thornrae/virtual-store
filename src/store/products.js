@@ -54,7 +54,8 @@ const initialState = {
     displayName: "pots",
     description: "description about pot category"}
   ],
-  selectedCategory: {} 
+  activeProducts: [],
+  activeCategories:[] 
 };
 
 export default function reducer( state=initialState, action ) {
@@ -71,7 +72,16 @@ export default function reducer( state=initialState, action ) {
       })
       return {...state, products: items};
     case 'SELECT':
-        return { ...state, selectedCategory: payload}
+      let showCategories = state.categories.filter( item => {
+        if(item.categoryName === payload)
+        return item
+      })
+
+      let showProducts = state.products.filter ( item => {
+       if(item.category === payload) {
+        return item
+      }})
+        return { ...state, activeProducts: showProducts, activeCategories:showCategories}
     case 'DISPLAY':
       return state
       
