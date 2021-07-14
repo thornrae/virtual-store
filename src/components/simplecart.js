@@ -49,8 +49,7 @@ function Cart () {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-            sit amet blandit leo lobortis eget.
+            {cartItem.description} {cartItem.price}
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -60,9 +59,3 @@ function Cart () {
 }
 
 export default Cart;
-{/* 
-<>
-    {cartReducer.map(item => (
-    <h3>Cart: {item.name}</h3>
-    ))}
-    </> */}

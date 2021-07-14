@@ -15,7 +15,6 @@ import Typography from '@material-ui/core/Typography';
 
 import {addToCart} from '../store/cart.js';
 
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -44,27 +43,21 @@ export default function MediaCard() {
   const classes = useStyles();
 
   const selectedProducts = useSelector( (state) => state.products.activeProducts)
-  console.log('selectedproducts', selectedProducts);
-  const activeCat = useSelector( (state) => state.categ.activeCategory)
-
-  // const filteredProducts = selectedProducts.filter(product => product.name === activeCat.categoryName)
-
-  
-
+  const categoryReducer = useSelector( (state) => state.categories.activeCategories)
 
   function cartAdd(item) {
     dispatch ( addToCart(item));
   }
 
   return (
-    // <>
-    // {categoryReducer.map(val => (
-    //     <>
-    //     <h2>{val.categoryName} </h2>
-    //     <p>{val.description}</p>
-    //     </>
-    //   ))}
-<>
+    <>
+    {categoryReducer.map(val => (
+        <>
+        <h2>{val.categoryName} </h2>
+        <p>{val.description}</p>
+        </>
+      ))}
+
 <Grid container className={classes.grid} spacing={2}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={2}>
