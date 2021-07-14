@@ -1,33 +1,43 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {selectCategory} from '../store/categories.js';
+import {getCategories, select} from '../store/categories.js';
+import {getProducts} from '../store/products.js';
 
 function Categories (props) {
 
   const dispatch = useDispatch();
   
-  const categoryState = useSelector( (state) => state.categories)
-  console.log('categoryReducer', categoryState);
+  const categoryState = useSelector( (state) => state.categ.categories)
+  // console.log('categoryState: ', categoryState);
 
-
-  // function chooseOne() {
-  //   dispatch( selectCategory );
+  // function select(name) {
+  //   dispatch ( selectCategory(name) )
   // }
 
-  function select(name) {
-    dispatch ( selectCategory(name) )
+  useEffect( () => {
+
+    dispatch (getCategories() )
+
+  }, [dispatch])
+
+  function sel(payload) {
+    dispatch( select(payload.categoryName) )
+    dispatch( getProducts(payload))
   }
-  
+
+
+  // console.log(categoryState);
 
   return (
-    <>
-    {/* <h1>Browse Our Categories {categoryReducer.selectedCategory}</h1> */}
-    <button onClick={ () => select('plants')}>Plants</button>
-    <button onClick={() => select('pots')}>Pots</button>
-    {/* or should these be inputs to be able to use e.target.value */}
-    </>
-  )
+  <>
+    {categoryState.map(category => (
+      // <button key={category._id}onClick={ () => select(`${category.categoryName}`)}
+    <button key={category._id}onClick={ () => sel(category)}>
+      {category.categoryName}</button>
+    ))}
+</>
+);
 }
 
 export default Categories;

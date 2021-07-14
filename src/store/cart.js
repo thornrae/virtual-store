@@ -1,5 +1,5 @@
 const initialState = {
-  items: []
+  items: [],
 }
 
 export default function reducer( state=initialState, action) {
@@ -9,10 +9,9 @@ export default function reducer( state=initialState, action) {
   switch(type) {
     case 'ADD':
       return {...state, items: [...state.items, payload]}
-      default: 
-        return state;
-  }
-
+    default: 
+      return state;
+  } 
 }
 
 export const addToCart = (item) => {
@@ -21,3 +20,4 @@ export const addToCart = (item) => {
     payload: item
   }
 }
+
