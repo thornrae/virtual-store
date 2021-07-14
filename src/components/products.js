@@ -75,7 +75,7 @@ export default function MediaCard() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={`https://source.unsplash.com/random?${product.name}`}
+          image={product.imageUrl}
           title="Random Product"
         />
         <CardContent>

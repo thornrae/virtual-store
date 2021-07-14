@@ -57,7 +57,7 @@ const initialState = {
   //   description: "description about pot category"}
   // ],
   activeProducts: [],
-  // activeCategories:[] 
+  cartItems:[] 
 };
 
 export default function reducer( state=initialState, action ) {
@@ -66,13 +66,13 @@ export default function reducer( state=initialState, action ) {
 
   switch(type) {
     case 'ADD':
-      let items =  state.products.map( item => {
+      let items =  state.activeProducts.map( item => {
         if(item.name === payload.name) {
-           item.inventory--;
+           item.inStock--;
         }
         return item      
       })
-      return {...state, products: items};
+      return {...state, activeProducts: items};
     case 'SELECTPRODUCTS':
       // let active = state.categories.filter( item => {
       //   if(payload === item.categoryName) {
