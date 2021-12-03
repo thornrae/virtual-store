@@ -39,7 +39,7 @@ function Cart () {
 
     <div className={classes.accordion}>
             {cartReducer.map(cartItem => ( 
-              <Accordion>
+              <Accordion key={cartItem._id}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"

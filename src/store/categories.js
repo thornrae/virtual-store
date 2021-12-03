@@ -11,7 +11,7 @@ const initialState = {
   //   description: "description about pot category"}
   // ],
   categories: [],
-  activeCategory:''
+  activeCategory:{}
 };
 
 export default function reducer( state=initialState, action ) {
@@ -19,36 +19,19 @@ export default function reducer( state=initialState, action ) {
   const { type, payload } = action;
 
   switch(type) {
-    // case 'ADD':
-    //   let items =  state.products.map( item => {
-    //     if(item.name === payload.name) {
-    //        item.inventory--;
-    //     }
-    //     return item      
-    //   })
-    //   return {...state, products: items};
+
     case 'LOAD': 
       return {...state, categories: payload}
+     
+      //SOMETHING WEIRD GOING ON WITH THIS
     case 'SELECT' :
-      let active = state.categories.filter( item => {
-        if(payload === item.categoryName) {
-          return item
+      let active = state.categories.map( item => {
+        if(item.categoryName === payload) {
+          console.log('select worked?')
         }
+        return item
       })
       return {...state, activeCategory: active}
-
-
-
-
-      // let showCategories = state.activeCategories.filter( item => {
-      //   if(item.categoryName === payload)
-      //   return item
-      // })
-      // let showProducts = state.products.filter ( item => {
-      //  if(item.category === payload) {
-      //   return item
-      // }})
-        // return { ...state, activeCategories:showCategories}
       
         default:
           return state;
@@ -69,13 +52,11 @@ export default function reducer( state=initialState, action ) {
     }
   }
 
-  
-  
   export const getCategories = () => async dispatch => {
     const response = await fetch('https://auth-api-401.herokuapp.com/api/v1/categories')
     console.log(response);
     const categories = await response.json();
-    console.log(categories)
+    console.log('categoriesstore', categories)
     dispatch(load(categories));
   }
 
