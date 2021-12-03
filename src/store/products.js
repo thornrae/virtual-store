@@ -74,32 +74,13 @@ export default function reducer( state=initialState, action ) {
       })
       return {...state, activeProducts: items};
     case 'SELECTPRODUCTS':
-      // let active = state.categories.filter( item => {
-      //   if(payload === item.categoryName) {
-      //     return item
-      //   }
-      // })
-      // console.log('payload:', payload);
       return {...state, activeProducts: payload}
-      // let showCategories = state.categories.filter( item => {
-      //   if(item.categoryName === payload)
-      //   return item
-      // })
-      // let showProducts = state.activeProducts.filter ( item => {
-      //  if(payload === item.category) {
-      //   return item
-      // }})
-      // console.log(payload)
-        // return { ...state, activeProducts: payload}
-      
-      
         default:
           return state;
       }
   }
 
   export const selectCategory = (products) => {
-    // console.log(name)
     return {
       type: 'SELECTPRODUCTS',
       payload: products
@@ -112,5 +93,4 @@ export default function reducer( state=initialState, action ) {
     const filteredProducts = products.filter(product => product.category === category.categoryName)
 
       dispatch(selectCategory(filteredProducts))
-    
   }

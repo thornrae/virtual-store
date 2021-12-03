@@ -22,6 +22,7 @@ function Categories (props) {
   }, [dispatch])
 
   function sel(payload) {
+    console.log('payload in sel, cat comp', payload)
     dispatch( select(payload.categoryName) )
     dispatch( getProducts(payload))
   }
@@ -33,7 +34,7 @@ function Categories (props) {
   <>
     {categoryState.map(category => (
       // <button key={category._id}onClick={ () => select(`${category.categoryName}`)}
-    <button key={category._id}onClick={ () => sel(category)}>
+    <button key={category._id} onClick={ () => sel(category)}>
       {category.categoryName}</button>
     ))}
 </>
