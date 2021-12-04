@@ -11,15 +11,19 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 
 
+
 const useStyles = makeStyles((theme) => ({
   accordion: {
     width: "8em",
     // position: "fixed",
+    float: "right",
     marginBottom: "2em", 
     // display: "flex",
-    float: "right",
   },
 
+  fixed: {
+    position: "relative"
+  },
   // one: {
   //   marginRight: "auto",
   // },
@@ -39,7 +43,7 @@ function Cart () {
 
     <div className={classes.accordion}>
             {cartReducer.map(cartItem => ( 
-              <Accordion key={cartItem._id}>
+              <Accordion key={cartItem._id} className={classes.fixed}>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"

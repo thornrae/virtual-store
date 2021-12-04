@@ -1,5 +1,5 @@
 import React from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -30,8 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Header() {
-
-  const dispatch = useDispatch();
 
   const cartReducer = useSelector( (state) => state.cart.items);
   console.log('cartReducer.length', cartReducer.length)

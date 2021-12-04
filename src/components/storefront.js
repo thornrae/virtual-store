@@ -6,13 +6,14 @@ import Product from './products.js';
 import Footer from './footer.js';
 import Cart from './simplecart.js';
 
+
 function Storefront () {
 
   return (
     <>
     <Header />
-    <Cart />
     <Categories />
+    <Cart />
     <Product />
     <Footer />
     
