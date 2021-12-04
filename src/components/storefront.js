@@ -13,9 +13,7 @@ function Storefront () {
     <Header />
     <Cart />
     <Categories />
-
     <Product />
-
     <Footer />
     
     </>
